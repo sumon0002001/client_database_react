@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from "@material-ui/core";
 import {addUser} from '../service/api';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 
 
@@ -26,8 +26,19 @@ const initialValue =  {
 const EditClient = () => {
     const [client, setClient] = useState(initialValue)
     const {name, country, email, phone} = client;
+    const {id} = useParams();
     const classes = useStyle()
     const history = useHistory();
+
+    useEffect(() => {
+      loadUserDetails();
+    }, [])
+
+
+    const loadUserDetails = async() => {
+        const response = await addUser(id);
+        setClient(response.data)
+    }
 
 
     const changeHandler = (e) => {
@@ -43,7 +54,7 @@ const EditClient = () => {
 
     return (
         <FormGroup className={classes.container} >
-             <Typography variant="h4">Add Clients</Typography>
+             <Typography variant="h4">Edit Clients</Typography>
           <FormControl>
             <InputLabel htmlFor="my-input"> Name </InputLabel>
             <Input 
@@ -90,7 +101,7 @@ const EditClient = () => {
           variant= "contained" 
           color= "primary"
           onClick={addUserDetails}>
-          Add Clients
+          EDIT Clients
           </Button>
         </FormGroup>
        
