@@ -23,7 +23,7 @@ const initialValue =  {
 }
 
 
-const AddUser = () => {
+const EditClient = () => {
     const [client, setClient] = useState(initialValue)
     const {name, country, email, phone} = client;
     const classes = useStyle()
@@ -97,4 +97,4 @@ const AddUser = () => {
     )
 }
 
-export default AddUser
+export default EditClient;
