@@ -1,9 +1,10 @@
 import React from 'react';
-import { AppBar, Toolbar, makeStyles, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, makeStyles} from '@material-ui/core';
+import { NavLink } from "react-router-dom";
 
 const styles = makeStyles({
     header: {
-        background: '#111111'
+        background: '#fcba03'
     }, 
     tab: {
        color :'#FFFFFF',
@@ -19,15 +20,15 @@ const Navbar = () => {
   return (
     <AppBar position="static" className={classes.header}>
     <Toolbar variant="dense">
-    <Typography variant="h6" color="inherit" component="div">
+    <NavLink to="/" className={classes.tab} >
       Dashboard
-    </Typography>
-    <Typography variant="h6" color="inherit" component="div">
+    </NavLink>
+    <NavLink to="/all" className={classes.tab}>
       AllUsers
-    </Typography>
-    <Typography variant="h6" color="inherit" component="div">
+    </NavLink>
+    <NavLink to="/add" className={classes.tab} >
       AddUser
-    </Typography>
+    </NavLink>
   </Toolbar>
 </AppBar>
         
