@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, makeStyles, Typography } from "@material-ui/core";
-import {addUser} from '../service/api';
+import {getUsers, editUser} from '../service/api';
 import { useHistory, useParams } from "react-router-dom";
 
 
@@ -36,7 +36,7 @@ const EditClient = () => {
 
 
     const loadUserDetails = async() => {
-        const response = await addUser(id);
+        const response = await getUsers(id);
         setClient(response.data)
     }
 
@@ -46,9 +46,10 @@ const EditClient = () => {
         console.log(client);
     }
 
-    const addUserDetails = async () => {
-        await addUser(client)
-        history.push('./all')
+    const editUserDetails = async() => {
+        await editUser(id, client)
+        history.push('/all')
+        console.log("editpage")
     
     }
 
@@ -94,13 +95,13 @@ const EditClient = () => {
               aria-describedby="my-helper-text"
               onChange= {(e) => changeHandler(e) }  
               name = "phone"
-              vaue = {phone}
+              value = {phone}
               />
           </FormControl>
           <Button 
           variant= "contained" 
           color= "primary"
-          onClick={addUserDetails}>
+          onClick={editUserDetails}>
           EDIT Clients
           </Button>
         </FormGroup>

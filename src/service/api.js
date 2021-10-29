@@ -10,3 +10,7 @@ export const getUsers = async (id) => {
 export const addUser = async (user) => {
     return await axios.post(baseURL, user)
 }
+
+export const editUser = async ( id, user) => {
+    return await axios.put(`${baseURL}/${id}`, user)
+}
