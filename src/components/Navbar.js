@@ -24,10 +24,10 @@ const Navbar = () => {
       Dashboard
     </NavLink>
     <NavLink to="/all" className={classes.tab}>
-      AllUsers
+      AllClients
     </NavLink>
     <NavLink to="/add" className={classes.tab} >
-      AddUser
+      AddClient
     </NavLink>
   </Toolbar>
 </AppBar>
